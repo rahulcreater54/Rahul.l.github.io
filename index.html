@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alexander Kane - Cybersecurity Expert</title>
+    <title>Rahul Sharma - Elite Cybersecurity Expert</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&family=Teko:wght@400;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,9 +15,19 @@
 
         body {
             font-family: 'Rajdhani', sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 30%, #16213e 70%, #0f0f23 100%);
             color: #ffffff;
             overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Matrix Rain Effect */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0.1;
         }
 
         /* 3D Navigation */
@@ -26,65 +36,88 @@
             top: 0;
             width: 100%;
             padding: 1rem 5%;
-            background: rgba(12, 12, 12, 0.95);
-            backdrop-filter: blur(20px);
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.3);
             z-index: 1000;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
         .navbar.scrolled {
             padding: 0.5rem 5%;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(30px);
+            transform: translateY(-8px);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .logo {
             font-family: 'Orbitron', monospace;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 900;
-            background: linear-gradient(45deg, #00d4ff, #ff00ff, #00ff88);
+            background: linear-gradient(45deg, #00d4ff, #ff0080, #00ff88, #ffaa00);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: logoGlow 4s ease-in-out infinite;
+            text-shadow: 0 0 40px rgba(0, 212, 255, 0.7);
+        }
+
+        @keyframes logoGlow {
+            0%, 100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            50% { background-position: 100% 50%; filter: hue-rotate(180deg); }
         }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
+            font-size: 1.1rem;
             position: relative;
-            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.4s ease;
         }
 
-        .nav-links a::after {
+        .nav-links a::before {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
+            top: 0;
             left: 0;
-            background: linear-gradient(90deg, #00d4ff, #ff00ff);
-            transition: width 0.3s ease;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
+            border-radius: 25px;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.4s ease;
+            z-index: -1;
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
+        .nav-links a:hover::before {
+            transform: scaleX(1);
         }
 
-        /* Hero Section with 3D Effect */
+        .nav-links a:hover {
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - Enhanced 3D */
         .hero {
             height: 100vh;
             display: flex;
@@ -92,90 +125,139 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
 
         .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
             background: 
-                radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,119,198,0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(120,219,255,0.3) 0%, transparent 50%);
-            animation: heroBg 20s ease-in-out infinite;
+                radial-gradient(circle at 20% 50%, rgba(0,212,255,0.4) 0%, transparent 40%),
+                radial-gradient(circle at 80% 20%, rgba(255,0,128,0.4) 0%, transparent 40%),
+                radial-gradient(circle at 40% 80%, rgba(0,255,136,0.4) 0%, transparent 40%),
+                radial-gradient(circle at 60% 60%, rgba(255,170,0,0.3) 0%, transparent 40%);
+            animation: heroBgRotate 25s linear infinite;
         }
 
-        @keyframes heroBg {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(180deg); }
+        @keyframes heroBgRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .hero-content {
             text-align: center;
-            z-index: 2;
+            z-index: 3;
             position: relative;
+            max-width: 800px;
         }
 
         .hero-title {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(3rem, 8vw, 6rem);
+            font-size: clamp(4rem, 10vw, 7rem);
             font-weight: 900;
-            margin-bottom: 1rem;
-            background: linear-gradient(45deg, #00d4ff, #ff00ff, #00ff88, #ffaa00);
-            background-size: 300% 300%;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0080, #00ff88, #ffaa00, #00d4ff);
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: gradientShift 3s ease-in-out infinite, float3D 6s ease-in-out infinite;
-            text-shadow: 0 0 50px rgba(0, 212, 255, 0.5);
+            animation: gradientShift 4s ease-in-out infinite, heroFloat 8s ease-in-out infinite;
+            text-shadow: 
+                0 0 20px rgba(0,212,255,0.8),
+                0 0 40px rgba(255,0,128,0.6),
+                0 0 60px rgba(0,255,136,0.4);
+            perspective: 1000px;
         }
 
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes float3D {
+        @keyframes heroFloat {
             0%, 100% { 
-                transform: translateY(0px) rotateX(0deg) rotateY(0deg); 
-                text-shadow: 0 20px 40px rgba(0,212,255,0.3);
+                transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1); 
             }
-            33% { 
-                transform: translateY(-20px) rotateX(5deg) rotateY(5deg); 
-                text-shadow: 0 25px 50px rgba(255,0,255,0.4);
+            25% { 
+                transform: translateY(-25px) rotateX(8deg) rotateY(8deg) scale(1.02); 
             }
-            66% { 
-                transform: translateY(-10px) rotateX(-5deg) rotateY(-5deg); 
-                text-shadow: 0 25px 50px rgba(0,255,136,0.4);
+            50% { 
+                transform: translateY(-15px) rotateX(-5deg) rotateY(-5deg) scale(1.01); 
+            }
+            75% { 
+                transform: translateY(-30px) rotateX(5deg) rotateY(5deg) scale(1.03); 
             }
         }
 
         .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            animation: fadeInUp 1s ease 0.5s both;
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            font-weight: 400;
+            animation: fadeInUp 1.2s ease 0.6s both;
+            text-shadow: 0 0 20px rgba(255,255,255,0.3);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            animation: fadeInUp 1.2s ease 1s both;
+        }
+
+        .stat-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00d4ff;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
         .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(45deg, rgba(0,212,255,0.2), rgba(255,0,128,0.2));
+            backdrop-filter: blur(20px);
             color: white;
             text-decoration: none;
             font-weight: 700;
+            font-size: 1.1rem;
+            border: 2px solid rgba(0,212,255,0.5);
             border-radius: 50px;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.4);
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            box-shadow: 0 15px 35px rgba(0,212,255,0.3);
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(45deg, #00d4ff, #0099cc);
+            border-color: #00d4ff;
         }
 
         .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.6);
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0,212,255,0.5);
         }
 
         .cta-button::before {
@@ -185,133 +267,176 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
         }
 
         .cta-button:hover::before {
             left: 100%;
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Sections */
         section {
-            padding: 100px 5%;
+            padding: 120px 5%;
             max-width: 1400px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .section-title {
             font-family: 'Orbitron', monospace;
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 6vw, 4rem);
             text-align: center;
-            margin-bottom: 4rem;
-            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            margin-bottom: 5rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0080, #00ff88);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease-in-out infinite;
             position: relative;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 3px;
-            background: linear-gradient(90deg, #00d4ff, #ff00ff);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #00d4ff, #ff0080, transparent);
             border-radius: 2px;
+            animation: pulse 2s infinite;
         }
 
-        /* About Section - 3D Cards */
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+        }
+
+        /* About Section - Enhanced 3D Cards */
         .about-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
         .about-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 3rem 2.5rem;
+            border-radius: 25px;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
             transform-style: preserve-3d;
+            overflow: hidden;
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080, #00ff88);
+            transform: scaleX(0);
+            transition: transform 0.6s ease;
+        }
+
+        .about-card:hover::before {
+            transform: scaleX(1);
         }
 
         .about-card:hover {
-            transform: translateY(-20px) rotateX(5deg) rotateY(5deg);
-            box-shadow: 0 30px 60px rgba(0, 212, 255, 0.3);
+            transform: translateY(-25px) rotateX(8deg) rotateY(8deg) scale(1.02);
+            box-shadow: 
+                0 35px 70px rgba(0,212,255,0.4),
+                0 0 40px rgba(255,0,128,0.3);
+            border-color: rgba(0,212,255,0.5);
         }
 
         .about-card i {
-            font-size: 3rem;
-            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #00d4ff, #ff0080);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: block;
         }
 
-        /* Skills Section - 3D Progress Bars */
+        .about-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #00d4ff;
+        }
+
+        /* Skills Section - Advanced 3D Progress */
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 4rem;
         }
 
         .skill-category {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .skill-category h3 {
             font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 2.5rem;
             color: #00d4ff;
+            text-align: center;
+            position: relative;
+        }
+
+        .skill-category h3::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080);
         }
 
         .skill-bar {
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             position: relative;
         }
 
         .skill-name {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 0.5rem;
+            align-items: center;
+            margin-bottom: 1rem;
             font-weight: 600;
+            font-size: 1.1rem;
         }
 
         .skill-progress {
-            height: 10px;
+            height: 12px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 5px;
+            border-radius: 10px;
             overflow: hidden;
             position: relative;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .skill-fill {
             height: 100%;
-            background: linear-gradient(90deg, #00d4ff, #ff00ff);
-            border-radius: 5px;
+            background: linear-gradient(90deg, #00d4ff, #ff0080, #00ff88);
+            border-radius: 10px;
             width: 0;
-            transition: width 2s ease-in-out;
+            transition: width 3s cubic-bezier(0.23, 1, 0.32, 1);
             position: relative;
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 25px rgba(0,212,255,0.6);
         }
 
         .skill-fill::after {
@@ -321,43 +446,55 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-            animation: shine 2s infinite;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+            animation: shine 2.5s infinite;
         }
 
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Projects Section - 3D Project Cards */
+        /* Projects Section - Enhanced 3D Cards */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 3rem;
         }
 
         .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
             overflow: hidden;
             position: relative;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
             transform-style: preserve-3d;
         }
 
         .project-card:hover {
-            transform: translateY(-15px) rotateX(10deg) rotateY(5deg) scale(1.02);
-            box-shadow: 0 40px 80px rgba(0, 212, 255, 0.4);
+            transform: translateY(-20px) rotateX(12deg) rotateY(8deg) scale(1.03);
+            box-shadow: 
+                0 50px 100px rgba(0,212,255,0.5),
+                0 0 60px rgba(255,0,128,0.4);
+            border-color: rgba(0,212,255,0.6);
         }
 
         .project-image {
-            height: 250px;
-            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            height: 280px;
+            background: linear-gradient(45deg, #1a1a2e, #16213e);
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-image i {
+            font-size: 4rem;
+            color: rgba(0,212,255,0.8);
+            animation: pulseIcon 2s infinite;
+        }
+
+        @keyframes pulseIcon {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.2); opacity: 1; }
         }
 
         .project-image::before {
@@ -367,166 +504,4 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .project-card:hover .project-image::before {
-            left: 100%;
-        }
-
-        .project-content {
-            padding: 2rem;
-        }
-
-        .project-title {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #00d4ff;
-        }
-
-        /* Contact Section */
-        .contact {
-            text-align: center;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 4rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-link:hover {
-            background: linear-gradient(45deg, #00d4ff, #ff00ff);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 212, 255, 0.4);
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
-        }
-
-        .particle {
-            position: absolute;
-            background: rgba(0, 212, 255, 0.6);
-            border-radius: 50%;
-            animation: float 20s infinite linear;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(100vh) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-100px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            section {
-                padding: 80px 5%;
-            }
-        }
-
-        /* Scroll Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body>
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
-
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="nav-container">
-            <div class="logo">CYBERSEC</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1 class="hero-title">Alexander Kane</h1>
-            <p class="hero-subtitle">Cybersecurity Expert | Ethical Hacker | Penetration Tester</p>
-            <a href="#projects" class="cta-button">View My Work</a>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="reveal">
-        <h2 class="section-title">About Me</h2>
-        <div class="about-grid">
-            <div class="about-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>10+ Years Experience</h3>
-                <p>Seasoned cybersecurity professional with extensive experience in penetration testing, threat hunting, and security architecture design.</p>
-            </div>
-            <div class="about-card">
-                <i class="fas fa-award"></i>
-                <h3>Certified Expert</h3>
-                <p>OSCP, CEH, CISSP, CompTIA Security+, GIAC Certified. Multiple CTF championships and bug bounty successes.</p>
-            </div>
-            <div class="about-card">
-                <i class="fas fa-users"></i>
-                <h3>500+ Clients</h3>
-                <p>Protected
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3

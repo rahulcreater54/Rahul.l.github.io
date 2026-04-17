@@ -2,156 +2,73 @@
 <html>
 <head>
     <title>Rahul | Cyber Portfolio</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            color: white;
-            background: radial-gradient(circle at top, #0a0f1f, #000);
-        }
-
-        /* CYBER GRID BACKGROUND */
-        body::before {
-            content: "";
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-        }
-
-        /* NAVBAR */
-        nav {
-            padding: 20px 60px;
-            background: rgba(0,0,0,0.6);
-        }
-
-        /* PROJECT SECTION */
-        .projects {
-            max-width: 900px;
-            margin: auto;
-            padding: 80px 20px;
-        }
-
-        h2 {
-            margin-bottom: 20px;
-        }
-
-        h3 {
-            margin-top: 30px;
-        }
-
-        input, textarea {
-            width: 100%;
-            margin-top: 10px;
-            padding: 12px;
-            background: #111;
-            border: 1px solid #333;
-            color: white;
-            border-radius: 5px;
-        }
-
-        button.add {
-            margin-top: 15px;
-            padding: 10px 18px;
-            background: cyan;
-            border: none;
-            color: black;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-
-        button.add:hover {
-            box-shadow: 0 0 10px cyan;
-        }
-
-        /* PROJECT CARDS */
-        .card {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border: 1px solid rgba(0,255,255,0.2);
-        }
-
-        .card img {
-            margin-top: 10px;
-            width: 100%;
-            border-radius: 8px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
-    Rahul
+    <div class="logo">Rahul</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+    </div>
 </nav>
 
-<section class="projects">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Your cybersecurity command center</h1>
+        <p>Designing secure systems and futuristic interfaces for real-world challenges.</p>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+    <div class="about-text">
+        <h2>About Me</h2>
+        <p>
+            I am an aspiring cybersecurity student focused on building secure systems and intelligent solutions.
+            I enjoy solving real-world problems through technology and designing futuristic user interfaces.
+        </p>
+    </div>
+
+    <div class="about-image">
+        <img src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png">
+    </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
 
     <h2>Projects</h2>
 
-    <div id="projectList"></div>
+    <div class="project-grid">
 
-    <h3>Add Project</h3>
+        <div class="project-card">
+            <h3>🚨 Smart Traffic System</h3>
+            <p>Secure emergency vehicle detection and traffic control system with authentication.</p>
+        </div>
 
-    <input id="title" placeholder="Title">
-    <textarea id="desc" placeholder="Description"></textarea>
-    <input id="img" placeholder="Image URL">
+        <div class="project-card">
+            <h3>🛡️ Phishing Detection Tool</h3>
+            <p>Detects malicious links using pattern recognition and cybersecurity rules.</p>
+        </div>
 
-    <button class="add" onclick="addProject()">Add</button>
+        <div class="project-card">
+            <h3>🔐 Login Security System</h3>
+            <p>Implements secure authentication with validation and encryption concepts.</p>
+        </div>
+
+    </div>
 
 </section>
-
-<script>
-let projects = JSON.parse(localStorage.getItem("projects")) || [];
-
-function displayProjects() {
-    let container = document.getElementById("projectList");
-    container.innerHTML = "";
-
-    projects.forEach(p => {
-        let card = document.createElement("div");
-        card.className = "card";
-
-        let content = "<h3>" + p.title + "</h3><p>" + p.desc + "</p>";
-
-        if (p.img) {
-            content += "<img src='" + p.img + "'>";
-        }
-
-        card.innerHTML = content;
-        container.appendChild(card);
-    });
-}
-
-function addProject() {
-    let title = document.getElementById("title").value;
-    let desc = document.getElementById("desc").value;
-    let img = document.getElementById("img").value;
-
-    if (!title || !desc) {
-        alert("Enter title and description");
-        return;
-    }
-
-    projects.push({title, desc, img});
-    localStorage.setItem("projects", JSON.stringify(projects));
-
-    displayProjects();
-
-    document.getElementById("title").value = "";
-    document.getElementById("desc").value = "";
-    document.getElementById("img").value = "";
-}
-
-displayProjects();
-</script>
 
 </body>
 </html>

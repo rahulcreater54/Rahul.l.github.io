@@ -1,71 +1,264 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Rahul | Cyber Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Cybersecurity Expert</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-
-<nav>
-    <div class="logo">RAHUL</div>
-    <div class="nav-links">
-        <a href="#">Home</a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-    </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-    <h1 class="typing">Initializing System...</h1>
-    <p>Cybersecurity Developer | Secure Systems | Futuristic UI</p>
-
-</section>
-
-<!-- ABOUT -->
-<section class="about" id="about">
-
-    <div class="about-text">
-        <h2>> About Me</h2>
-        <p>
-            I build secure, intelligent systems focused on real-world cybersecurity challenges.
-            My work combines logic, security, and futuristic interface design.
-        </p>
-    </div>
-
-    <div class="about-img">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
-    </div>
-
-</section>
-
-<!-- PROJECTS -->
-<section class="projects" id="projects">
-
-    <h2>> Projects</h2>
-
-    <div class="grid">
-
-        <div class="card">
-            <h3>Smart Traffic System</h3>
-            <p>Secure emergency detection system with intelligent signal control.</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>CYBERSECURE</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#services" class="nav-link">Services</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
+    </nav>
 
-        <div class="card">
-            <h3>Phishing Detector</h3>
-            <p>Identifies malicious URLs using cybersecurity rules and patterns.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Cybersecurity</span>
+                    <br>
+                    Expert & Penetration Tester
+                </h1>
+                <p class="hero-subtitle">Protecting digital assets with cutting-edge security solutions and ethical hacking expertise.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#projects" class="btn btn-secondary">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <i class="fas fa-lock"></i>
+                    <span>99.9%</span>
+                    <p>Uptime</p>
+                </div>
+                <div class="floating-card card-2">
+                    <i class="fas fa-bug"></i>
+                    <span>500+</span>
+                    <p>Vulnerabilities Found</p>
+                </div>
+                <div class="floating-card card-3">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100%</span>
+                    <p>Success Rate</p>
+                </div>
+            </div>
         </div>
-
-        <div class="card">
-            <h3>Secure Login System</h3>
-            <p>Implements authentication with validation and encryption concepts.</p>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
+    </section>
 
-    </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>John Doe</h3>
+                    <p class="about-role">Certified Cybersecurity Specialist</p>
+                    <p>With 8+ years of experience in cybersecurity, I specialize in penetration testing, threat hunting, and building robust security architectures. My mission is to stay one step ahead of cyber threats and protect organizations from evolving digital risks.</p>
+                    <div class="skills">
+                        <div class="skill-item">
+                            <span>Penetration Testing</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Network Security</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Incident Response</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Penetration Testing</h3>
+                    <p>Comprehensive security assessments to identify vulnerabilities before attackers do.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Vulnerability Assessment</h3>
+                    <p>Automated and manual scanning to discover security weaknesses in your systems.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Incident Response</h3>
+                    <p>Rapid response and recovery services to minimize damage from security breaches.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Security Consulting</h3>
+                    <p>Strategic advice to build and maintain a robust cybersecurity posture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Enterprise Network Pentest</h3>
+                        <p>Identified 47 critical vulnerabilities in a Fortune 500 company's network infrastructure.</p>
+                        <div class="project-tags">
+                            <span class="tag">Network Security</span>
+                            <span class="tag">Penetration Testing</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Cloud Security Audit</h3>
+                        <p>Secured AWS infrastructure for a fintech startup, reducing attack surface by 78%.</p>
+                        <div class="project-tags">
+                            <span class="tag">Cloud Security</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Mobile App Security</h3>
+                        <p>Discovered and fixed critical flaws in a banking mobile application.</p>
+                        <div class="project-tags">
+                            <span class="tag">Mobile Security</span>
+                            <span class="tag">Android/iOS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>Email</h3>
+                        <p>john.doe@cybersecure.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>Phone</h3>
+                        <p>+1 (555) 123-4567</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Location</h3>
+                        <p>San Francisco, CA</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>CYBERSECURE</span>
+                </div>
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+                <p>&copy; 2024 John Doe. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

@@ -8,7 +8,6 @@
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
             color: white;
-            overflow-x: hidden;
             background: radial-gradient(circle at top, #0a0f1f, #000);
         }
 
@@ -21,181 +20,95 @@
             background: linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
                         linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
             background-size: 40px 40px;
-            animation: moveGrid 10s linear infinite;
             z-index: -1;
-        }
-
-        @keyframes moveGrid {
-            from { transform: translateY(0); }
-            to { transform: translateY(40px); }
         }
 
         /* NAVBAR */
         nav {
-            display: flex;
-            justify-content: space-between;
             padding: 20px 60px;
-            position: fixed;
-            width: 100%;
-            backdrop-filter: blur(10px);
             background: rgba(0,0,0,0.6);
-            z-index: 100;
         }
 
-        nav a {
-            color: #aaa;
-            margin-left: 20px;
-            text-decoration: none;
-        }
-
-        nav a:hover {
-            color: cyan;
-        }
-
-        /* HERO */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 80px;
-        }
-
-        .hero-text {
-            max-width: 500px;
-        }
-
-        .hero-text h1 {
-            font-size: 48px;
-        }
-
-        .hero-text p {
-            color: #aaa;
-        }
-
-        .btn {
-            margin-top: 20px;
-            padding: 12px 20px;
-            background: cyan;
-            border: none;
-            color: black;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            box-shadow: 0 0 20px cyan;
-        }
-
-        .hero-img img {
-            width: 280px;
-            filter: drop-shadow(0 0 20px cyan);
-        }
-
-        /* PROJECTS */
+        /* PROJECT SECTION */
         .projects {
-            padding: 80px;
+            max-width: 900px;
+            margin: auto;
+            padding: 80px 20px;
         }
 
-        .card {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 20px 0;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0,255,255,0.2);
-            transition: 0.3s;
+        h2 {
+            margin-bottom: 20px;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 20px rgba(0,255,255,0.3);
+        h3 {
+            margin-top: 30px;
         }
 
         input, textarea {
             width: 100%;
             margin-top: 10px;
-            padding: 10px;
+            padding: 12px;
             background: #111;
             border: 1px solid #333;
             color: white;
+            border-radius: 5px;
         }
 
         button.add {
-            margin-top: 10px;
-            padding: 10px;
+            margin-top: 15px;
+            padding: 10px 18px;
             background: cyan;
             border: none;
             color: black;
+            cursor: pointer;
+            border-radius: 5px;
         }
 
-        /* FADE ANIMATION */
-        .fade {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: 1s;
+        button.add:hover {
+            box-shadow: 0 0 10px cyan;
         }
 
-        .fade.show {
-            opacity: 1;
-            transform: translateY(0);
+        /* PROJECT CARDS */
+        .card {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid rgba(0,255,255,0.2);
         }
+
+        .card img {
+            margin-top: 10px;
+            width: 100%;
+            border-radius: 8px;
+        }
+
     </style>
 </head>
 
 <body>
 
 <nav>
-    <div>Rahul</div>
-    <div>
-        <a href="#">Home</a>
-        <a href="#projects">Projects</a>
-    </div>
+    Rahul
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-text fade">
-        <h1>Cybersecurity Developer</h1>
-        <p>Designing secure systems and futuristic interfaces for real-world challenges.</p>
-        <button class="btn" onclick="scrollToProjects()">View Projects</button>
-    </div>
+<section class="projects">
 
-    <div class="hero-img fade">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
-    </div>
-</section>
-
-<!-- PROJECTS -->
-<section class="projects" id="projects">
     <h2>Projects</h2>
 
     <div id="projectList"></div>
 
     <h3>Add Project</h3>
+
     <input id="title" placeholder="Title">
     <textarea id="desc" placeholder="Description"></textarea>
     <input id="img" placeholder="Image URL">
+
     <button class="add" onclick="addProject()">Add</button>
+
 </section>
 
 <script>
-function scrollToProjects() {
-    document.getElementById("projects").scrollIntoView();
-}
-
-/* ANIMATION */
-const faders = document.querySelectorAll('.fade');
-
-window.addEventListener('scroll', () => {
-    faders.forEach(el => {
-        let top = el.getBoundingClientRect().top;
-        if (top < window.innerHeight - 50) {
-            el.classList.add('show');
-        }
-    });
-});
-
-/* PROJECT SYSTEM */
 let projects = JSON.parse(localStorage.getItem("projects")) || [];
 
 function displayProjects() {
@@ -208,7 +121,9 @@ function displayProjects() {
 
         let content = "<h3>" + p.title + "</h3><p>" + p.desc + "</p>";
 
-        if (p.img) content += "<img src='" + p.img + "' width='100%'>";
+        if (p.img) {
+            content += "<img src='" + p.img + "'>";
+        }
 
         card.innerHTML = content;
         container.appendChild(card);
@@ -220,10 +135,19 @@ function addProject() {
     let desc = document.getElementById("desc").value;
     let img = document.getElementById("img").value;
 
+    if (!title || !desc) {
+        alert("Enter title and description");
+        return;
+    }
+
     projects.push({title, desc, img});
     localStorage.setItem("projects", JSON.stringify(projects));
 
     displayProjects();
+
+    document.getElementById("title").value = "";
+    document.getElementById("desc").value = "";
+    document.getElementById("img").value = "";
 }
 
 displayProjects();

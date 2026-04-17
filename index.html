@@ -1,26 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Rahul | Cybersecurity Portfolio</title>
+    <title>Rahul | Cyber Portfolio</title>
 
     <style>
         body {
             margin: 0;
             font-family: 'Segoe UI', sans-serif;
-            background: #05070d;
             color: white;
-            scroll-behavior: smooth;
+            overflow-x: hidden;
+            background: radial-gradient(circle at top, #0a0f1f, #000);
+        }
+
+        /* CYBER GRID BACKGROUND */
+        body::before {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,255,255,0.05) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(0,255,255,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: moveGrid 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes moveGrid {
+            from { transform: translateY(0); }
+            to { transform: translateY(40px); }
         }
 
         /* NAVBAR */
         nav {
             display: flex;
             justify-content: space-between;
-            padding: 20px 50px;
+            padding: 20px 60px;
             position: fixed;
             width: 100%;
-            background: rgba(0,0,0,0.6);
             backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.6);
+            z-index: 100;
         }
 
         nav a {
@@ -42,14 +61,16 @@
             padding: 0 80px;
         }
 
+        .hero-text {
+            max-width: 500px;
+        }
+
         .hero-text h1 {
-            font-size: 45px;
-            margin-bottom: 10px;
+            font-size: 48px;
         }
 
         .hero-text p {
             color: #aaa;
-            max-width: 400px;
         }
 
         .btn {
@@ -65,17 +86,14 @@
             box-shadow: 0 0 20px cyan;
         }
 
-        .hero img {
-            width: 350px;
+        .hero-img img {
+            width: 280px;
+            filter: drop-shadow(0 0 20px cyan);
         }
 
-        /* PROJECT SECTION */
+        /* PROJECTS */
         .projects {
             padding: 80px;
-        }
-
-        .projects h2 {
-            text-align: center;
         }
 
         .card {
@@ -83,17 +101,14 @@
             padding: 20px;
             border-radius: 12px;
             margin: 20px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0,255,255,0.2);
             transition: 0.3s;
         }
 
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 20px rgba(0,255,255,0.3);
-        }
-
-        /* ADD PROJECT */
-        .add-box {
-            margin-top: 50px;
         }
 
         input, textarea {
@@ -113,7 +128,7 @@
             color: black;
         }
 
-        /* ANIMATION */
+        /* FADE ANIMATION */
         .fade {
             opacity: 0;
             transform: translateY(40px);
@@ -145,22 +160,22 @@
         <button class="btn" onclick="scrollToProjects()">View Projects</button>
     </div>
 
-    <img src="https://i.imgur.com/8Km9tLL.png" class="fade">
+    <div class="hero-img fade">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png">
+    </div>
 </section>
 
 <!-- PROJECTS -->
 <section class="projects" id="projects">
-    <h2>My Projects</h2>
+    <h2>Projects</h2>
 
     <div id="projectList"></div>
 
-    <div class="add-box">
-        <h3>Add Project</h3>
-        <input id="title" placeholder="Title">
-        <textarea id="desc" placeholder="Description"></textarea>
-        <input id="img" placeholder="Image URL">
-        <button class="add" onclick="addProject()">Add</button>
-    </div>
+    <h3>Add Project</h3>
+    <input id="title" placeholder="Title">
+    <textarea id="desc" placeholder="Description"></textarea>
+    <input id="img" placeholder="Image URL">
+    <button class="add" onclick="addProject()">Add</button>
 </section>
 
 <script>
